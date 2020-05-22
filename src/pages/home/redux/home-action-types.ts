@@ -1,3 +1,5 @@
+import { Post } from "../../../types/post-type/post-type";
+
 export const SET_POSTS_LIST = "SET_POSTS_LIST";
 export const SET_POSTS_LIST_LOADING = "SET_POSTS_LIST_LOADING";
 
