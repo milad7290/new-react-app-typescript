@@ -1,12 +1,19 @@
 import { PostReducer } from "../../../types/post-type/post-reducer-type";
-import { SET_POSTS_LIST, SET_POSTS_LIST_LOADING } from "./home-action-types";
+import {
+  PostActionTypes,
+  SET_POSTS_LIST,
+  SET_POSTS_LIST_LOADING,
+} from "./home-action-types";
 
 const initialState: PostReducer = {
   data: [],
   isLoading: false,
 };
 
-const HomeReducer = (state = initialState, action: any) => {
+const HomeReducer = (
+  state = initialState,
+  action: PostActionTypes
+): PostReducer => {
   switch (action.type) {
     case SET_POSTS_LIST_LOADING:
       return { ...state, isLoading: action.isLoading };

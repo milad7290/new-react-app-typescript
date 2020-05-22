@@ -1,9 +1,11 @@
 import { Dispatch } from "redux";
+import { AppState } from "../../../store";
+import { AppActions } from "../../../types/app-action-type/app-action-type";
 import { postsList } from "../api/home-api";
 import { setPosts, setPostsLoading } from "./home-action-types";
 
-function fetchPosts() {
-  return (dispatch: Dispatch) => {
+const fetchPosts = () => {
+  return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
     dispatch(setPostsLoading(true));
 
     return postsList().then((res: any) => {
@@ -11,6 +13,6 @@ function fetchPosts() {
       dispatch(setPostsLoading(false));
     });
   };
-}
+};
 
 export { fetchPosts };

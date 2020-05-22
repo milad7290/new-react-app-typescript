@@ -3,12 +3,16 @@ import Button from "@material-ui/core/Button";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { bindActionCreators } from "redux";
+import { ThunkDispatch } from "redux-thunk";
 import { ErrorBoundary } from "../../helper/error-boundary/error-boundary";
+import { AppState } from "../../store";
+import { AppActions } from "../../types/app-action-type/app-action-type";
 import { Post } from "../../types/post-type/post-type";
 import TestComponent from "./components/test-component/test-component";
 import "./home.scss";
 import { fetchPosts } from "./redux/home-actions";
-import { getPosts } from "./redux/home-selector";
+import { getPosts, getPostsLoading } from "./redux/home-selector";
 
 interface HomeProps {
   postList: Post[];
@@ -20,7 +24,9 @@ interface HomeStates {
   activeStep: number;
 }
 
-class Home extends Component<HomeProps, HomeStates> {
+type Props = HomeProps & LinkDispatchToProps & LinkStateToProps;
+
+class Home extends Component<Props, HomeStates> {
   state = {
     activeStep: 0,
   };
@@ -67,34 +73,33 @@ class Home extends Component<HomeProps, HomeStates> {
   }
 }
 
-// interface LinkStateToProps {
-//   postList: Post[];
-//   postListLoading: boolean;
-// }
+interface LinkStateToProps {
+  postList: Post[];
+  postListLoading: boolean;
+}
 
-// interface LinkDispatchToProps {}
+interface LinkDispatchToProps {
+  fetchPosts: () => void;
+}
 
-const mapStateToProps = (state: any, ownProp: HomeProps) => {
-  const result = getPosts(state);
+const mapStateToProps = (
+  state: AppState,
+  ownProp: HomeProps
+): LinkStateToProps => {
+  const postList = getPosts(state);
+  const postListLoading = getPostsLoading(state);
 
   return {
-    postList: result && result.data ? result.data : [],
-    postListLoading: result.isLoading,
+    postList,
+    postListLoading,
   };
 };
 
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    fetchPosts: () => {
-      dispatch(fetchPosts());
-    },
-  };
-};
-
-// Home.propTypes = {
-//   postList: PropTypes.array,
-//   fetchPosts: PropTypes.func,
-//   postListLoading: PropTypes.bool,
-// };
+const mapDispatchToProps = (
+  dispatch: ThunkDispatch<any, any, AppActions>,
+  ownProp: HomeProps
+): LinkDispatchToProps => ({
+  fetchPosts: bindActionCreators(fetchPosts, dispatch),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -1,5 +1,10 @@
 const getPosts = (state: any) => {
-  return state.home;
+  const result = state.home;
+  return result && result.data ? result.data : [];
 };
 
-export { getPosts };
+const getPostsLoading = (state: any) => {
+  return state.home.isLoading;
+};
+
+export { getPosts, getPostsLoading };
