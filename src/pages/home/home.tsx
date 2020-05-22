@@ -1,5 +1,4 @@
 import Button from "@material-ui/core/Button";
-// import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
@@ -51,7 +50,6 @@ class Home extends Component<Props, HomeStates> {
 
   render() {
     const { postList, postListLoading } = this.props;
-    // const { activeStep } = this.state;
 
     return (
       <div className="App">
