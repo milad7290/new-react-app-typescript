@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./app/app";
+import App from "./app/App";
 import "./index.scss";
 import * as serviceWorker from "./serviceWorker";
 import { configureStore } from "./store";

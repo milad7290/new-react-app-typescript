@@ -1,15 +1,15 @@
 // import PropTypes from "prop-types";
 import React from "react";
-import "./subtest-component.scss";
-import { Post } from "../../../../../models/post.model";
+import { Post } from "../../models/post.model";
+import "./Subtest.scss";
 
-interface SubTestComponentProps {
+interface SubTestProps {
   postList: Post[];
 }
 
-interface SubTestComponentStates {}
+interface SubTestStates {}
 
-const SubTestComponent = (props: SubTestComponentProps) => {
+const SubTest = (props: SubTestProps) => {
   const { postList } = props;
   // const { activeStep } = this.state;
 
@@ -24,4 +24,4 @@ const SubTestComponent = (props: SubTestComponentProps) => {
   );
 };
 
-export default SubTestComponent;
+export default SubTest;

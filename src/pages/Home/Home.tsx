@@ -2,16 +2,16 @@ import Button from "@material-ui/core/Button";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { ErrorBoundary } from "../../helper/error-boundary/error-boundary";
-import TestComponent from "./components/test-component/test-component";
-import "./home.scss";
+import Test from "../../components/Test/Test";
+import { ErrorBoundary } from "../../helper/ErrorBoundary/ErrorBoundary";
 import { Post } from "../../models/post.model";
+import { fetchPosts } from "../../services/post.service";
+import { AppState } from "../../store";
 import {
   getPosts,
   getPostsLoading,
 } from "../../store/selectors/post.selectors";
-import { fetchPosts } from "../../services/post.service";
-import { AppState } from "../../store";
+import "./Home.scss";
 
 interface HomeProps {
   postList: Post[];
@@ -34,22 +34,24 @@ const Home = (props: HomeProps) => {
 
   useEffect(() => {
     dispatch(fetchPosts());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="App">
       <header className="App-header">
         <ErrorBoundary>
-          <TestComponent
-            isLoading={postListLoading}
-            postList={postList}
-          ></TestComponent>
+          <Test isLoading={postListLoading} postList={postList}></Test>
         </ErrorBoundary>
         <button onClick={() => setActiveStep(1)}></button>
         <Button variant="contained" color="primary" disableElevation>
           تست تم متریال
         </Button>
         <Link to="/aboutUs">درباره ما</Link>
+        <small>
+          You are running this application in <b>{process.env.NODE_ENV}</b>{" "}
+          mode.
+        </small>
+        <strong>{process.env.REACT_APP_NOT_SECRET_CODE}</strong>
       </header>
     </div>
   );

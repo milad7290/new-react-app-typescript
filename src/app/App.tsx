@@ -4,7 +4,8 @@ import React from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { theme } from "../theme/material-theme";
-import AppRouter from "./router";
+import "./App.scss";
+import AppRouter from "./Router";
 
 const App = (props: any) => (
   <Provider store={props.store}>

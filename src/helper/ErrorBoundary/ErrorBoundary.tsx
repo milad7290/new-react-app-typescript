@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import "./error-boundary.scss";
+import "./ErrorBoundary.scss";
 
 export class ErrorBoundary extends PureComponent {
   state = {

@@ -1,7 +1,7 @@
 import { Dispatch } from "react";
+import { HttpService } from "../providers/http-service.provider";
 import { AppActions, AppState, AppThunk } from "../store";
-import { setPostsLoading, setPosts } from "../store/actions/post.actions";
-import { postsList } from "../apis/post.apis";
+import { setPosts, setPostsLoading } from "../store/actions/post.actions";
 
 export const fetchPosts = (): AppThunk<void> => async (
   dispatch: Dispatch<AppActions>,
@@ -10,7 +10,9 @@ export const fetchPosts = (): AppThunk<void> => async (
   dispatch(setPostsLoading(true));
   try {
     // TODO: should be modified
-    const posts = (await postsList()) as any;
+    const posts = (await HttpService({ url: "/posts" })) as any;
+
+    dispatch(setPostsLoading(false));
     dispatch(setPosts(posts.result));
   } catch (error) {}
   dispatch(setPostsLoading(false));
