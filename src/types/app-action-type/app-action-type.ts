@@ -1,3 +1,3 @@
-import { PostActionTypes } from "../../pages/home/redux/home-action-types";
+import { PostActionTypes } from "../../redux/post/post-action-types";
 
 export type AppActions = PostActionTypes;

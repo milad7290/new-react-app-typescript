@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import home from "../../pages/home/redux/home-reducer";
+import post from "../../redux/post/post-reducer";
 
 export const rootReducer = combineReducers({
-  home,
+  post,
 });

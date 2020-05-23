@@ -1,5 +1,5 @@
-import { AppActions } from "../../../types/app-action-type/app-action-type";
-import { Post } from "../../../types/post-type/post-type";
+import { AppActions } from "../../types/app-action-type/app-action-type";
+import { Post } from "../../types/post-type/post-type";
 
 export const SET_POSTS_LIST = "SET_POSTS_LIST";
 export const SET_POSTS_LIST_LOADING = "SET_POSTS_LIST_LOADING";
@@ -31,3 +31,4 @@ const setPosts = (posts: Post[]): AppActions => {
 };
 
 export { setPostsLoading, setPosts };
+

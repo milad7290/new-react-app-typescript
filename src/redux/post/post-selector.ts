@@ -1,10 +1,11 @@
 const getPosts = (state: any) => {
-  const result = state.home;
+  const result = state.post;
   return result && result.data ? result.data : [];
 };
 
 const getPostsLoading = (state: any) => {
-  return state.home.isLoading;
+  return state.post.isLoading;
 };
 
 export { getPosts, getPostsLoading };
+

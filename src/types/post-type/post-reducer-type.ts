@@ -1,6 +1,6 @@
 import { Post } from "./post-type";
 
-export interface PostReducer {
+export interface PostReducerType {
   data: Post[];
   isLoading: boolean;
 }

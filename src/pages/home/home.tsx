@@ -5,13 +5,13 @@ import { Link } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import { ThunkDispatch } from "redux-thunk";
 import { ErrorBoundary } from "../../helper/error-boundary/error-boundary";
+import { fetchPosts } from "../../redux/post/post-actions";
+import { getPosts, getPostsLoading } from "../../redux/post/post-selector";
 import { AppState } from "../../store";
 import { AppActions } from "../../types/app-action-type/app-action-type";
 import { Post } from "../../types/post-type/post-type";
 import TestComponent from "./components/test-component/test-component";
 import "./home.scss";
-import { fetchPosts } from "./redux/home-actions";
-import { getPosts, getPostsLoading } from "./redux/home-selector";
 
 interface HomeProps {
   postList: Post[];
