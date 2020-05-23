@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export function HttpService({
+export function HttpProvider({
   base = "https://jsonplaceholder.typicode.com",
   url,
   data,
@@ -11,10 +11,10 @@ export function HttpService({
     // ClientType: "Web",
   },
   method = HttpMethod.GET,
-}: HttpServiceType) {
+}: HttpProviderType) {
   const fullUrl = url.startsWith("/") ? `${base}${url}` : `${base}/${url}`;
 
-  const options: HttpServiceOptionType = {
+  const options: HttpProviderOptionType = {
     method,
     headers,
     data,
@@ -62,7 +62,7 @@ export function resultHandler({ result }: any) {
   }
 }
 
-export interface HttpServiceType {
+export interface HttpProviderType {
   base?: string;
   url: string;
   data?: any;
@@ -70,7 +70,7 @@ export interface HttpServiceType {
   method?: string;
 }
 
-export interface HttpServiceOptionType {
+export interface HttpProviderOptionType {
   data: any;
   headers: any;
   method: any;
