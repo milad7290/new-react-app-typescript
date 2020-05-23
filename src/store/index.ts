@@ -1,10 +1,29 @@
-import { applyMiddleware, compose, createStore } from "redux";
+import { applyMiddleware, compose, createStore, combineReducers } from "redux";
 import logger from "redux-logger";
-import thunk, { ThunkMiddleware } from "redux-thunk";
-import { rootReducer } from "../services/reducers";
-import { AppActions } from "../types/app-action-type/app-action-type";
+import thunk, { ThunkMiddleware, ThunkAction } from "redux-thunk";
+import { allPostsReducer, postsLoadingReducer } from "./reducers/post.reducers";
+import { allErrorsReducer } from "./reducers/error.reducers";
+import { ErrorActionTypes } from "./types/error.types";
+import { PostActionTypes } from "./types/post.types";
+
+const rootReducer = combineReducers({
+  post: combineReducers({
+    all: allPostsReducer,
+    loading: postsLoadingReducer,
+  }),
+  errors: allErrorsReducer,
+});
+
+export type AppActions = ErrorActionTypes | PostActionTypes;
 
 export type AppState = ReturnType<typeof rootReducer>;
+
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  AppState,
+  unknown,
+  AppActions
+>;
 
 export function configureStore(initialState = {}) {
   const enhancers = [

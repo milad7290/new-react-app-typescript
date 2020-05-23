@@ -1,6 +1,6 @@
 import axios from "axios";
-import { HttpServiceOptionType } from "../../types/http-service-type/http-service-option-type";
-import { HttpServiceType } from "../../types/http-service-type/http-service-type";
+import { HttpServiceOptionType } from "./http-service-option-type";
+import { HttpServiceType } from "./http-service-type";
 import { HttpMethod } from "./http-method";
 import { resultHandler } from "./result-handler";
 
