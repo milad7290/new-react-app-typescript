@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
-import AboutUs from "./pages/about-us/about-us";
-import Home from "./pages/home/home";
-import NotFound from "./pages/not-found/not-found";
-class MainRouter extends Component {
+import AboutUs from "../pages/about-us/about-us";
+import Home from "../pages/home/home";
+import NotFound from "../pages/not-found/not-found";
+class AppRouter extends Component {
   componentDidMount() {
     const jssStyles = document.getElementById("jss-server-side");
     if (jssStyles && jssStyles.parentNode) {
@@ -24,4 +24,4 @@ class MainRouter extends Component {
     );
   }
 }
-export default MainRouter;
+export default AppRouter;
