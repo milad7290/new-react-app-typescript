@@ -1,16 +1,14 @@
-import React, { Component } from "react";
-import "./about-us.scss";
+import React from 'react';
+import './about-us.scss';
 
-class AboutUs extends Component {
-  render() {
-    return (
+const AboutUs = () => {
+   return (
       <div className="App">
-        <header className="App-header">
-          <p>AboutUs.</p>
-        </header>
+         <header className="App-header">
+            <p>AboutUs.</p>
+         </header>
       </div>
-    );
-  }
-}
+   );
+};
 
 export default AboutUs;

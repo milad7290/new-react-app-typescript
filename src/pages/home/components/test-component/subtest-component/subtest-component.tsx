@@ -1,37 +1,28 @@
 // import PropTypes from "prop-types";
-import React, { PureComponent } from "react";
-import { Post } from "../../../../../types/post-type/post-type";
-import "./subtest-component.scss";
+import React from 'react';
+import { Post } from '../../../../../types/post-type/post-type';
+import './subtest-component.scss';
 
 interface SubTestComponentProps {
-  postList: Post[];
+   postList: Post[];
 }
 
 interface SubTestComponentStates {}
 
-class SubTestComponent extends PureComponent<
-  SubTestComponentProps,
-  SubTestComponentStates
-> {
-  render() {
-    const { postList } = this.props;
-    // const { activeStep } = this.state;
+const SubTestComponent = (props:SubTestComponentProps) => {
+   const { postList } = props;
+   // const { activeStep } = this.state;
 
-    return (
+   return (
       <div className="App">
-        <header className="App-header">
-          {postList.map((post) => {
-            return <li key={post.id}>{post.title}</li>;
-          })}
-          {/* <p>{postList}</p> */}
-        </header>
+         <header className="App-header">
+            {postList.map((post) => {
+               return <li key={post.id}>{post.title}</li>;
+            })}
+         </header>
       </div>
-    );
-  }
-}
+   );
+};
 
-// SubTestComponent.propTypes = {
-//   postList: PropTypes.array,
-// };
 
 export default SubTestComponent;
